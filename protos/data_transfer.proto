@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+service DataTransfer {
+    /* rpc get_samples(Empty) returns (stream Sample) {}; */
+    /* rpc put_stats(ImageStats) returns (Empty) {}; */
+    rpc get_data_nooff(DataRequest) returns (DataResponse) {};
+    rpc get_data_alloff(DataRequest) returns (DataResponse) {};
+    rpc get_data_piloff(DataRequest) returns (DataResponse) {};
+    rpc get_data_sophon(DataRequest) returns (DataResponse) {};
+}
+
+message Empty {}
+
+message DataResponse {
+    bytes image = 1;    /* Image data. */
+    bytes label = 2;    /* Image label. */
+    int32 pproc = 3;    /* Preprocessing steps already performed. */
+    string fname = 4;   /* Filename. */
+    string pil_mode = 5;    /* Mode for reconstructing the image from bytes in pil. */
+    int32 width = 6;    /* Width of the pil iamge. */
+    int32 height = 7;   /* Height of the pil iamge. */
+    repeated int32 shape = 8; /* Shape of the tensor if the retuend format is a tensor. */
+    string dtype = 9;   /* Dtype of the tensor. */
+}
+
+message DataRequest {
+    string fname = 1;   /* Filename. */
+    int32  pproc = 2;   /* Preprocessing step with the smallest size. */
+    int32  size  = 3;   /* Size during step PPROC. */
+}
