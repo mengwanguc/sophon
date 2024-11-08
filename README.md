@@ -228,7 +228,7 @@ If you want to create new profile, you should use the `--write-profile-folder` a
 To run profiling:
 
 ```
-
+python main.py  ~/data/openimages/40k/ -a alexnet -j 32  --dataset-mode=remote_sophon --epochs=1 --host=192.5.87.114 --write-profile-folder='profiles/openimages/' --profiling
 ```
 
 ### Limit network bandwidth
@@ -348,7 +348,7 @@ For SOPHON:
 
 First run profiling for one epoch (which uses no-off):
 ```
-python main.py  ~/data/openimages/40k/ -a alexnet -j 32  --dataset-mode=remote_sophon --epochs=1 --host=192.5.87.114 --remote-cpus=20 --net-bw=430 --profile-folder='profiles/openimages/' --profiling
+python main.py  ~/data/openimages/40k/ -a alexnet -j 32  --dataset-mode=remote_sophon --epochs=1 --host=192.5.87.114 --write-profile-folder='profiles/openimages/' --profiling
 ```
 
 Then run the epoch with SOPHON offloading:
