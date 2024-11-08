@@ -211,7 +211,7 @@ Replace `remote_nooff` with the mode that you want to test. Supported modes:
 - remote_nooff
 - remote_alloff
 - remote_piloff
-- remote smartoff
+- remote_sophon
 
 Replace `remote-cpus=5` with the number of CPUs used on remote node for preprocessing
 
